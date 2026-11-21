@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # anChat
 
 A Sinhala/English anonymous question wall with share-link-only profiles, email accounts for profile owners, a public community feed, and light/dark themes. Asking questions never requires an account.
@@ -60,3 +61,7 @@ The site uses relative asset paths and supports repository-subpath Pages URLs. P
 ```sh
 npm run build
 ```
+=======
+# AnChat
+a anonymous Q&amp;A platform
+>>>>>>> 73f1b633fe7c6c9a7fcb23d5cfdf56042811bab5
