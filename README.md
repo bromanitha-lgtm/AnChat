@@ -56,7 +56,7 @@ Question records older than **two calendar months** are deleted immediately when
 
 The site uses relative asset paths and supports repository-subpath Pages URLs. Profile links use a random query-string token and work without server-side routing.
 
-The production build serves `public/sw.js` at the site root and registers it for Monetag on supported browsers. Vite includes this file in the GitHub Pages deployment; Monetag's worker loads its service script from `5gvci.com`, so it requires the deployed site to use HTTPS.
+The Google AdSense loader is included in `index.html`. Ad delivery depends on the site being approved and configured in the AdSense account.
 
 ## Build
 

@@ -10,11 +10,21 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
 );
 
 if (import.meta.env.PROD && "serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    void navigator.serviceWorker
-      .register("./sw.js")
-      .catch((error: unknown) => {
-        console.error("Monetag service worker registration failed:", error);
-      });
-  });
+  const monetagWorkerUrl = new URL("./sw.js", window.location.href).href;
+  void navigator.serviceWorker
+    .getRegistrations()
+    .then((registrations) =>
+      Promise.all(
+        registrations
+          .filter((registration) =>
+            [registration.active, registration.waiting, registration.installing].some(
+              (worker) => worker?.scriptURL === monetagWorkerUrl,
+            ),
+          )
+          .map((registration) => registration.unregister()),
+      ),
+    )
+    .catch((error: unknown) => {
+      console.error("Could not remove the previous Monetag service worker:", error);
+    });
 }
